@@ -21,13 +21,13 @@ public class InstancedObjectRenderer : MonoBehaviour
 
     void Start()
     {
-        // 描画範囲設定（広域に）
+        // オブジェクト描画範囲 中心(0, 0, 0) XYZ -500 ~ 500の立方体 のバウンディングボックスの定義
         drawBounds = new Bounds(Vector3.zero, Vector3.one * 1000f);
 
-        // インスタンス行列バッファ
+        // GPUに渡すバッファの定義　(構造体型データ格納, 描画するオブジェクトの複製数, 3D行列のfloat4x4サイズ)
         matrixBuffer = new GraphicsBuffer(GraphicsBuffer.Target.Structured, instanceCount, sizeof(float) * 16);
 
-        // ベース位置バッファ（xyz: 位置、w: インスタンスIDなどに利用可）
+        // ベース位置バッファ（xyz: 位置、w: インスタンスID等の利用）
         basePositionBuffer = new GraphicsBuffer(GraphicsBuffer.Target.Structured, instanceCount, sizeof(float) * 4);
         Vector4[] basePositions = new Vector4[instanceCount];
         for (int i = 0; i < instanceCount; i++)
@@ -36,15 +36,18 @@ public class InstancedObjectRenderer : MonoBehaviour
                 Random.Range(-50f, 50f),
                 0f,
                 Random.Range(-50f, 50f),
-                i // 任意の識別値として
+                i // インスタンスID
             );
         }
+
+        // バッファにinstanceCountの数だけ出力する座標を指定するデータを格納
         basePositionBuffer.SetData(basePositions);
 
         // Compute Shader 設定
-        kernelID = computeShader.FindKernel("CSMain");
-        computeShader.GetKernelThreadGroupSizes(kernelID, out threadGroupSizeX, out _, out _);
+        kernelID = computeShader.FindKernel("CSMain"); // Compute Shaderのカーネル名を指定
+        computeShader.GetKernelThreadGroupSizes(kernelID, out threadGroupSizeX, out _, out _); // ComputeShaderで実行されるメイン関数のスレッド数　[numthreads(64, 1, 1)]　1は_で省略
 
+        
         computeShader.SetBuffer(kernelID, "Result", matrixBuffer);
         computeShader.SetBuffer(kernelID, "BasePosition", basePositionBuffer);
         computeShader.SetInt("instanceCount", instanceCount);
