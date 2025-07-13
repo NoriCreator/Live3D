@@ -1,0 +1,236 @@
+{
+    "root": {
+        "data": {
+            "id": "db5hnxtbl200",
+            "created": 1751857527424,
+            "text": "3DLive"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "db5hpk7y9680",
+                    "created": 1751857654562,
+                    "text": "item",
+                    "expandState": "expand"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "db5hpjgwbvc0",
+                            "created": 1751857652926,
+                            "text": "ペンライト"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "db5iepxllbs0",
+                                    "created": 1751859626101,
+                                    "text": "Color"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "db5upbg4aaw0",
+                                            "created": 1751894309894,
+                                            "text": "曲に合わせた制御"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "db5ietrcf9c0",
+                                    "created": 1751859634430,
+                                    "text": "Transform Quanternion"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "db5ibipkfu00",
+                            "created": 1751859375285,
+                            "text": "巨大シアター"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "db5ihd6nx2g0",
+                            "created": 1751859833443,
+                            "text": "SpotLight"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "db5ipw1p04o0",
+                            "created": 1751860501415,
+                            "text": "character"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "db5iq5goreo0",
+                                    "created": 1751860521913,
+                                    "text": "揺れもの"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "db5htrujmjc0",
+                    "created": 1751857984622,
+                    "text": "Function",
+                    "expandState": "expand",
+                    "layout_mind_offset": {
+                        "x": 629.9999989986429,
+                        "y": 80.99999987125409
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "db5hs861kww0",
+                            "created": 1751857863418,
+                            "text": "Timeline",
+                            "expandState": "expand",
+                            "layout_mind_offset": {
+                                "x": 526.9999991623569,
+                                "y": 76.99999987761191
+                            }
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "db5hsnbij1s0",
+                                    "created": 1751857896400,
+                                    "text": "topic"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "db5i0ch27200",
+                            "created": 1751858499704,
+                            "text": "Effect"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "db5i6805t1k0",
+                                    "created": 1751858960160,
+                                    "text": "SpotLight"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "db5i1e8yl3k0",
+                                    "created": 1751858581932,
+                                    "text": "Emission"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "db5uuu39xi00",
+                                            "created": 1751894742297,
+                                            "text": "Bloom & 白に近い色"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "db5i1joei080",
+                                    "created": 1751858593750,
+                                    "text": "Reflection"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "db5i2lmqyrk0",
+                                    "created": 1751858676368,
+                                    "text": "VFX"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "db5idamqpnk0",
+                                            "created": 1751859514428,
+                                            "text": "ParticleSystem"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "db5uufi20200",
+                                                    "created": 1751894710539,
+                                                    "text": "炎、煙"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "db5uujdiaug0",
+                                                    "created": 1751894718971,
+                                                    "text": "その他エフェクト"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "db5ihtklp600",
+                                    "created": 1751859869115,
+                                    "text": "Fog"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "db5ipoy6sb40",
+                                    "created": 1751860485965,
+                                    "text": "質感"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "db5ib3hh11k0",
+                            "created": 1751859342144,
+                            "text": "Camera"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "db5ip8wgxpk0",
+                                    "created": 1751860451033,
+                                    "text": "cinecamera"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "right",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
