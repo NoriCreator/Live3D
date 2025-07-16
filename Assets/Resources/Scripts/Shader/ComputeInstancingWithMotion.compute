@@ -1,25 +1,62 @@
-// ComputeInstancingWithMotion.compute
-
 #pragma kernel CSMain
 
 RWStructuredBuffer<float4x4> Result;
 StructuredBuffer<float4> BasePosition;
+
 int instanceCount;
+float _Time;
+float _SwingFrequency;
+float _SwingOffset;
+float _SeatPitchX;
+float _SeatPitchY;
 
 [numthreads(64, 1, 1)]
 void CSMain(uint3 id : SV_DispatchThreadID)
 {
     uint index = id.x;
-    if (index >= (uint)instanceCount) return;
+    if (index >= instanceCount) return;
 
     float4 base = BasePosition[index];
     float3 pos = base.xyz;
 
-    float4x4 m;
-    m[0] = float4(1, 0, 0, 0);
-    m[1] = float4(0, 1, 0, 0);
-    m[2] = float4(0, 0, 1, 0);
-    m[3] = float4(pos.x, pos.y, pos.z, 1);
+    // 疑似ランダム値（インスタンスIDベース）
+    uint seed = index * 123u + 456u;
+    float2 noiseSeed = float2(seed % 1000, seed / 1000);
 
-    Result[index] = m;
+    float phase = 6.2831853 * _SwingFrequency * _Time;
+    phase += sin(noiseSeed.x + _Time * 0.27);
+
+    // origin: 肩位置
+    float3 origin = pos;
+    origin.x += sin(seed * 1.13) * 0.3 * _SeatPitchX;
+    origin.z += cos(seed * 1.73) * 0.3 * _SeatPitchY;
+    origin.y += sin(seed * 1.91) * 0.2;
+
+    // angle: スイング角度
+    float angle = cos(phase);
+    float angleSmooth = smoothstep(-1, 1, angle) * 2 - 1;
+    angle = lerp(angle, angleSmooth, frac(sin(seed * 0.71) * 43758.5453));
+    angle *= lerp(0.3, 1.0, frac(cos(seed * 0.89) * 12345.678));
+
+    // axis: 揺れ方向
+    float dx = sin(seed * 1.31 + _Time * 0.23);
+    float3 axis = normalize(float3(dx, 0, 1));
+
+    // offset: 棒の長さ分
+    float offset = _SwingOffset * lerp(0.75, 1.25, frac(seed * 0.414));
+
+    // モデルマトリクス生成
+    float4x4 m1 = float4x4(1,0,0,0,  0,1,0,0,  0,0,1,0,  origin.x,origin.y,origin.z,1);
+    float s = sin(angle);
+    float c = cos(angle);
+    float3 a = axis;
+    float4x4 m2 = float4x4(
+        c + a.x*a.x*(1-c),     a.x*a.y*(1-c) - a.z*s, a.x*a.z*(1-c) + a.y*s, 0,
+        a.y*a.x*(1-c) + a.z*s, c + a.y*a.y*(1-c),     a.y*a.z*(1-c) - a.x*s, 0,
+        a.z*a.x*(1-c) - a.y*s, a.z*a.y*(1-c) + a.x*s, c + a.z*a.z*(1-c),     0,
+        0, 0, 0, 1
+    );
+    float4x4 m3 = float4x4(1,0,0,0,  0,1,0,0,  0,0,1,0,  0,offset,0,1);
+
+    Result[index] = mul(mul(m1, m2), m3);
 }
