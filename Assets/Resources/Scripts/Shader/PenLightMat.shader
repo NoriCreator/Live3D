@@ -28,6 +28,7 @@ Shader "Custom/PenLightMat"
             #pragma multi_compile_instancing
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
             StructuredBuffer<float4x4> matrixBuffer;
             StructuredBuffer<float4> basePositionBuffer;
@@ -49,18 +50,17 @@ Shader "Custom/PenLightMat"
                 float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float3 worldPos : TEXCOORD1;
+                uint instanceID : SV_InstanceID;
             };
-
-            float _TimeY;
 
             V2F vert(appdata v)
             {
-                uint id = v.instanceID;
+                V2F o;
+                o.instanceID = v.instanceID;
 
-                float4x4 modelMatrix = matrixBuffer[id];
+                float4x4 modelMatrix = matrixBuffer[o.instanceID];
                 float4 worldPos = mul(modelMatrix, float4(v.vertex.xyz, 1.0));
 
-                V2F o;
                 o.vertex = TransformWorldToHClip(worldPos.xyz);
                 o.uv = v.uv;
                 o.worldPos = worldPos.xyz;
@@ -69,7 +69,18 @@ Shader "Custom/PenLightMat"
 
             float4 frag(V2F i) : SV_Target
             {
-                return _EmissionColor * _EmissionIntensity;
+                uint seed = i.instanceID * 123u + 456u;
+                float r1 = frac(sin(seed * 0.123456789) * 43758.5453);
+
+                float wave = distance(i.worldPos.xy, float2(0, 16));
+                wave = sin(wave * 0.53 - _Time.y * 2.8) * 0.5 + 0.5;
+
+                float hue = frac(r1 + _Time.y * 0.83);
+                float br = wave * wave * 50 + 0.1; 
+
+                float3 color = HsvToRgb(float3(hue, 1, br));
+
+                return float4(color, 1) * _EmissionColor * _EmissionIntensity;
             }
 
             ENDHLSL

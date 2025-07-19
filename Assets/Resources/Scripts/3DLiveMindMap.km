@@ -42,9 +42,34 @@
                                 "data": {
                                     "id": "db5ietrcf9c0",
                                     "created": 1751859634430,
-                                    "text": "Transform Quanternion"
+                                    "text": "モーション"
                                 },
                                 "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "dbfwxc7tqds0",
+                                    "created": 1752916180269,
+                                    "text": "大量描画"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "dbfx48jcb800",
+                                            "created": 1752916720807,
+                                            "text": "Graphic Buffer"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "dbfx4hqpffk0",
+                                            "created": 1752916740843,
+                                            "text": "Compute Shader"
+                                        },
+                                        "children": []
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -54,15 +79,41 @@
                             "created": 1751859375285,
                             "text": "巨大シアター"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "dbfwxyrjj7c0",
+                                    "created": 1752916229350,
+                                    "text": "マスク"
+                                },
+                                "children": []
+                            }
+                        ]
                     },
                     {
                         "data": {
-                            "id": "db5ihd6nx2g0",
-                            "created": 1751859833443,
-                            "text": "SpotLight"
+                            "id": "dbfwzjh5afs0",
+                            "created": 1752916352798,
+                            "text": "ライト"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "db5ihd6nx2g0",
+                                    "created": 1751859833443,
+                                    "text": "SpotLight"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "dbfwzms2vhc0",
+                                    "created": 1752916359990,
+                                    "text": "Emission Material"
+                                },
+                                "children": []
+                            }
+                        ]
                     },
                     {
                         "data": {
@@ -73,11 +124,63 @@
                         "children": [
                             {
                                 "data": {
-                                    "id": "db5iq5goreo0",
-                                    "created": 1751860521913,
-                                    "text": "揺れもの"
+                                    "id": "dbfwyupxhbk0",
+                                    "created": 1752916298910,
+                                    "text": "MMD",
+                                    "expandState": "expand"
                                 },
-                                "children": []
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "db5iq5goreo0",
+                                            "created": 1751860521913,
+                                            "text": "揺れもの物理挙動"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "dbfwz3272pk0",
+                                            "created": 1752916317066,
+                                            "text": "モーション"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "dbfx3af53y00",
+                                            "created": 1752916646543,
+                                            "text": "シェーダー",
+                                            "expandState": "expand"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "dbfx2rddykw0",
+                                                    "created": 1752916605078,
+                                                    "text": "ライティング"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "dbfx2vangoo0",
+                                                    "created": 1752916613619,
+                                                    "text": "アウトライン"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "dbfx40bciu00",
+                                                    "created": 1752916702909,
+                                                    "text": "セルフシャドウ"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -97,28 +200,6 @@
                 "children": [
                     {
                         "data": {
-                            "id": "db5hs861kww0",
-                            "created": 1751857863418,
-                            "text": "Timeline",
-                            "expandState": "expand",
-                            "layout_mind_offset": {
-                                "x": 526.9999991623569,
-                                "y": 76.99999987761191
-                            }
-                        },
-                        "children": [
-                            {
-                                "data": {
-                                    "id": "db5hsnbij1s0",
-                                    "created": 1751857896400,
-                                    "text": "topic"
-                                },
-                                "children": []
-                            }
-                        ]
-                    },
-                    {
-                        "data": {
                             "id": "db5i0ch27200",
                             "created": 1751858499704,
                             "text": "Effect"
@@ -126,36 +207,28 @@
                         "children": [
                             {
                                 "data": {
-                                    "id": "db5i6805t1k0",
-                                    "created": 1751858960160,
-                                    "text": "SpotLight"
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "db5i1e8yl3k0",
-                                    "created": 1751858581932,
-                                    "text": "Emission"
-                                },
-                                "children": [
-                                    {
-                                        "data": {
-                                            "id": "db5uuu39xi00",
-                                            "created": 1751894742297,
-                                            "text": "Bloom & 白に近い色"
-                                        },
-                                        "children": []
-                                    }
-                                ]
-                            },
-                            {
-                                "data": {
                                     "id": "db5i1joei080",
                                     "created": 1751858593750,
                                     "text": "Reflection"
                                 },
-                                "children": []
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "dbfx1s108ao0",
+                                            "created": 1752916528142,
+                                            "text": "SSR"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "dbfx1v9g7740",
+                                            "created": 1752916535182,
+                                            "text": "Reflection Probe"
+                                        },
+                                        "children": []
+                                    }
+                                ]
                             },
                             {
                                 "data": {
@@ -193,19 +266,53 @@
                             },
                             {
                                 "data": {
-                                    "id": "db5ihtklp600",
-                                    "created": 1751859869115,
-                                    "text": "Fog"
+                                    "id": "dbfx0ip7ohk0",
+                                    "created": 1752916429473,
+                                    "text": "ポストプロセス"
                                 },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "db5ipoy6sb40",
-                                    "created": 1751860485965,
-                                    "text": "質感"
-                                },
-                                "children": []
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "dbfx0n269zs0",
+                                            "created": 1752916438964,
+                                            "text": "フレア・パラ"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "dbfx0rxoh2g0",
+                                            "created": 1752916449576,
+                                            "text": "深度"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "dbfx24o4x6g0",
+                                                    "created": 1752916555662,
+                                                    "text": "フォグ"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "dbfx2852cxs0",
+                                                    "created": 1752916563216,
+                                                    "text": "ゴッドレイ"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "dbfx3psjy0w0",
+                                            "created": 1752916680005,
+                                            "text": "Bloom"
+                                        },
+                                        "children": []
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -220,7 +327,7 @@
                                 "data": {
                                     "id": "db5ip8wgxpk0",
                                     "created": 1751860451033,
-                                    "text": "cinecamera"
+                                    "text": "cinemachine"
                                 },
                                 "children": []
                             }

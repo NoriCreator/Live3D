@@ -8,13 +8,17 @@ public struct Audience
     public float2 seatPitch;    // 席ごとの間隔          x: 横の間隔, y: 縦の間隔
     public int2 blockCount;     // ブロック数            x: 横のブロック数, y: 縦のブロック数
     public float2 aisleWidth;   // 通路(ブロック間)の幅   x: 横の幅, y: 縦の幅
+    public float swingFrequency; // ペンライトの揺れ周波数
+    public float swingOffset;   // ペンライトの揺れオフセット
 
     public static Audience Default() => new Audience
     {
         seatPerBlock = new int2(8, 12),
         seatPitch = new float2(0.4f, 0.8f),
         blockCount = new int2(7, 3),
-        aisleWidth = new float2(0.7f, 1.2f)
+        aisleWidth = new float2(0.7f, 1.2f),
+        swingFrequency = 1.0f,
+        swingOffset = 1.0f
     };
 
     public int BlockSeatCount => seatPerBlock.x * seatPerBlock.y;               // 1ブロックあたりの席数

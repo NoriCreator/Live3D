@@ -1,5 +1,6 @@
 // Unity用：Compute Shaderで位置情報生成、モーションはシェーダー側で制御（ペンライト用途）
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class InstancedObjectRenderer : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class InstancedObjectRenderer : MonoBehaviour
     private int kernelID;
     private uint threadGroupSizeX;
 
+    private Vector3 originPosition;
+
     void Start()
     {
         int instanceCount = audience.TotalSeatCount;
@@ -31,12 +34,16 @@ public class InstancedObjectRenderer : MonoBehaviour
         // ベース位置バッファ（xyz: 位置、w: インスタンスID等の利用）
         basePositionBuffer = new GraphicsBuffer(GraphicsBuffer.Target.Structured, instanceCount, sizeof(float) * 4);
 
+        // 座席の中心座標
+        originPosition = this.transform.position;
+
         Vector4[] basePositions = new Vector4[instanceCount];
         for (int i = 0; i < instanceCount; i++)
         {
             var (block, seat) = audience.GetCoordinatesFromIndex(i);
             var pos = audience.GetPositionOnPlane(block, seat);
-            basePositions[i] = new Vector4(pos.x, 0f, pos.y, i); // w: インスタンスID
+
+            basePositions[i] = new Vector4(pos.x + originPosition.x, originPosition.y, pos.y + originPosition.z, i); // w: インスタンスID
         }
         // バッファにinstanceCountの数だけ出力する座標を指定するデータを格納
         basePositionBuffer.SetData(basePositions);
@@ -77,10 +84,14 @@ public class InstancedObjectRenderer : MonoBehaviour
 
     void Update()
     {
+        // Unityでパフォーマンスを計測するGUIを表示する
+        Profiler.BeginSample("PenLight Update");
+
         DispatchComputeShader(audience.TotalSeatCount);
 
         // 毎フレーム位置は一定、モーションはシェーダー側で処理
         Graphics.DrawMeshInstancedProcedural(instanceMesh, 0, instanceMaterial, drawBounds, audience.TotalSeatCount);
+        Profiler.EndSample();
     }
 
     void OnDestroy()
